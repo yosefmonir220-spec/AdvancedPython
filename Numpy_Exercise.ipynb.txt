@@ -1,0 +1,712 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "id": "a15b7bb7",
+      "metadata": {
+        "id": "a15b7bb7"
+      },
+      "source": [
+        "## Practice 1: Creating Arrays"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "id": "830c2eaa",
+      "metadata": {
+        "id": "830c2eaa"
+      },
+      "source": [
+        "**Q1.** Create a 1D array of numbers from 10 to 50 using NumPy."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 1,
+      "id": "7d6c917a",
+      "metadata": {
+        "id": "7d6c917a",
+        "outputId": "29962b72-f904-4f51-a0cf-94f4e47aba2c",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "[10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33\n",
+            " 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50]\n"
+          ]
+        }
+      ],
+      "source": [
+        "import numpy as np\n",
+        "my_array_range = np.arange(10,51)\n",
+        "print(my_array_range)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "id": "6a259924",
+      "metadata": {
+        "id": "6a259924"
+      },
+      "source": [
+        "**Q2.** Create a 2D array of shape (3, 4) filled with ones."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 3,
+      "id": "421974e4",
+      "metadata": {
+        "id": "421974e4",
+        "outputId": "109033c7-ca34-4b08-96df-30c9194559d5",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "[[ 0  1  2  3]\n",
+            " [ 4  5  6  7]\n",
+            " [ 8  9 10 11]]\n"
+          ]
+        }
+      ],
+      "source": [
+        "import numpy as np\n",
+        "my_array_range2 = np.arange(0,12)\n",
+        "reshaped = my_array_range2.reshape(3,4)\n",
+        "print(reshaped)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "id": "db381eca",
+      "metadata": {
+        "id": "db381eca"
+      },
+      "source": [
+        "**Q3.** Convert the following list to a NumPy array and print its shape:\n",
+        "```python\n",
+        "data = [[3, 5, 1], [6, 7, 9], [8, 4, 2]]\n",
+        "```"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 5,
+      "id": "de8b2812",
+      "metadata": {
+        "id": "de8b2812",
+        "outputId": "acc2cc5b-8703-4767-8652-6b4f47a87000",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "(3, 3)\n"
+          ]
+        }
+      ],
+      "source": [
+        "import numpy as np\n",
+        "data = [[3, 5, 1], [6, 7, 9], [8, 4, 2]]\n",
+        "my_array3 = np.array(data)\n",
+        "print(my_array3.shape)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "id": "0728728c",
+      "metadata": {
+        "id": "0728728c"
+      },
+      "source": [
+        "## Practice 2: Shape & Dimensions"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "id": "d4dfc3ec",
+      "metadata": {
+        "id": "d4dfc3ec"
+      },
+      "source": [
+        "**Q4.** Given an array:\n",
+        "```python\n",
+        "arr = np.array([[1, 2], [3, 4], [5, 6]])\n",
+        "```\n",
+        "- What is the shape and dimension of the array?"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 6,
+      "id": "ea8f8464",
+      "metadata": {
+        "id": "ea8f8464",
+        "outputId": "5a377cf0-0228-4825-c7f4-38137c8b9a75",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "The array dimesnions : 2\n",
+            "The array shape ; (3, 2)\n"
+          ]
+        }
+      ],
+      "source": [
+        "import numpy as np\n",
+        "arr = np.array([[1, 2], [3, 4], [5, 6]])\n",
+        "print(f\"The array dimesnions : {arr.ndim}\")\n",
+        "print(f\"The array shape ; {arr.shape}\")\n"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "id": "169eb599",
+      "metadata": {
+        "id": "169eb599"
+      },
+      "source": [
+        "## Practice 3: Reshaping and Transposing"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "id": "b7e9f382",
+      "metadata": {
+        "id": "b7e9f382"
+      },
+      "source": [
+        "**Q5.** Reshape the following array into a shape of (3, 3):\n",
+        "```python\n",
+        "arr = np.array([1, 2, 3, 4, 5, 6, 7, 8, 9])\n",
+        "```"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 7,
+      "id": "ce1f6443",
+      "metadata": {
+        "id": "ce1f6443",
+        "outputId": "31fa9f96-bf28-4a03-a2ee-294e09b6e2e0",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "[[1 2 3]\n",
+            " [4 5 6]\n",
+            " [7 8 9]]\n"
+          ]
+        }
+      ],
+      "source": [
+        "import numpy as np\n",
+        "arr = np.array([1, 2, 3, 4, 5, 6, 7, 8, 9])\n",
+        "Reshaped2 = arr.reshape(3,3)\n",
+        "print(Reshaped2)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "id": "03e84762",
+      "metadata": {
+        "id": "03e84762"
+      },
+      "source": [
+        "**Q6.** Transpose the reshaped array and print both."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 13,
+      "id": "c281797c",
+      "metadata": {
+        "id": "c281797c",
+        "outputId": "3782ce0b-6280-478d-a77b-c2c148d91d72",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "[[1 2 3]\n",
+            " [4 5 6]\n",
+            " [7 8 9]]\n",
+            "[[1 4 7]\n",
+            " [2 5 8]\n",
+            " [3 6 9]]\n"
+          ]
+        }
+      ],
+      "source": [
+        "\n",
+        "arr = np.array([1, 2, 3, 4, 5, 6, 7, 8, 9])\n",
+        "Reshaped2 = arr.reshape(3,3)\n",
+        "print(Reshaped2)\n",
+        "print(Reshaped2.T)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "id": "e5a9d959",
+      "metadata": {
+        "id": "e5a9d959"
+      },
+      "source": [
+        "**Q7.** Write a function to reverse this array.\n",
+        "```python\n",
+        "arr = np.array([1, 2, 3, 4, 5, 6, 7, 8, 9])\n",
+        "```"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 15,
+      "id": "ca5de20f",
+      "metadata": {
+        "id": "ca5de20f",
+        "outputId": "e4668baa-ddee-4a21-a483-aaf6f44dc4ff",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "[9 8 7 6 5 4 3 2 1]\n"
+          ]
+        }
+      ],
+      "source": [
+        "arr = np.array([1, 2, 3, 4, 5, 6, 7, 8, 9])\n",
+        "def reverse_func(x):\n",
+        "  print(x[::-1])\n",
+        "reverse_func(arr)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "id": "c2b3d3cb",
+      "metadata": {
+        "id": "c2b3d3cb"
+      },
+      "source": [
+        "## Practice 4: Higher Dimensions"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "id": "7c8237ae",
+      "metadata": {
+        "id": "7c8237ae"
+      },
+      "source": [
+        "**Q8.** Create a 3D NumPy array with shape (2, 3, 4) containing numbers from 1 to 24."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 16,
+      "id": "290a81d0",
+      "metadata": {
+        "id": "290a81d0",
+        "outputId": "04f74279-e563-4df2-8856-a145f36690de",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "[[[ 1  2  3  4]\n",
+            "  [ 5  6  7  8]\n",
+            "  [ 9 10 11 12]]\n",
+            "\n",
+            " [[13 14 15 16]\n",
+            "  [17 18 19 20]\n",
+            "  [21 22 23 24]]]\n"
+          ]
+        }
+      ],
+      "source": [
+        "my_array_range3 = np.arange(1,25)\n",
+        "new_array = my_array_range3.reshape(2,3,4)\n",
+        "print(new_array)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "id": "22066926",
+      "metadata": {
+        "id": "22066926"
+      },
+      "source": [
+        "**Q9.** What is the `.ndim` and `.shape` of the array in Q8?"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 18,
+      "id": "c566cd51",
+      "metadata": {
+        "id": "c566cd51",
+        "outputId": "201a0851-cc15-45cd-bc2c-92b02483227d",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "3\n",
+            "(2, 3, 4)\n"
+          ]
+        }
+      ],
+      "source": [
+        "print(new_array.ndim)\n",
+        "print(new_array.shape)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "id": "a7a8ee5a",
+      "metadata": {
+        "id": "a7a8ee5a"
+      },
+      "source": [
+        "## Practice 5: Indexing and Slicing"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "id": "006cb94f",
+      "metadata": {
+        "id": "006cb94f"
+      },
+      "source": [
+        "**Q10.** Create an array from 0 to 9 and extract elements from index 2 to 6."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 21,
+      "id": "f85be9f4",
+      "metadata": {
+        "id": "f85be9f4",
+        "outputId": "ad26c378-a6f5-461b-e790-e29b983488a5",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "[0 1 2 3 4 5 6 7 8 9]\n",
+            "[2 3 4 5 6]\n"
+          ]
+        }
+      ],
+      "source": [
+        "my_array_range4 = np.arange(0,10)\n",
+        "print(my_array_range4[2:7])"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "id": "e799cb8d",
+      "metadata": {
+        "id": "e799cb8d"
+      },
+      "source": [
+        "**Q11.** Given a 2D array, retrieve the second row and the third column.\n",
+        "\n",
+        "```python\n",
+        "arr = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])\n",
+        "```"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 37,
+      "id": "7c751678",
+      "metadata": {
+        "id": "7c751678",
+        "outputId": "9f4c6b13-bd64-4f88-c67f-e9002566195f",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "2nd row : \n",
+            "[[2]\n",
+            " [5]\n",
+            " [8]]\n",
+            "3rd column : [7 8 9]\n"
+          ]
+        }
+      ],
+      "source": [
+        "from __future__ import print_function\n",
+        "arr = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])\n",
+        "\n",
+        "x = arr[:,1:2]\n",
+        "y= arr[2]\n",
+        "print(f\"2nd row : \\n{x}\")\n",
+        "print(f\"3rd column : {y}\")"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "id": "e7a60b81",
+      "metadata": {
+        "id": "e7a60b81"
+      },
+      "source": [
+        "## Practice 6: Array Operations"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "id": "7c5711aa",
+      "metadata": {
+        "id": "7c5711aa"
+      },
+      "source": [
+        "**Q12.** Create two arrays of the same shape and perform element-wise addition, subtraction, and multiplication."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 40,
+      "id": "62d4b703",
+      "metadata": {
+        "id": "62d4b703",
+        "outputId": "675cdc3f-36d9-4da3-a3f0-0d926cfbda40",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "[[ 5]\n",
+            " [ 7]\n",
+            " [ 9]\n",
+            " [11]\n",
+            " [13]]\n",
+            "[[5]\n",
+            " [5]\n",
+            " [5]\n",
+            " [5]\n",
+            " [5]]\n",
+            "[[ 0]\n",
+            " [ 6]\n",
+            " [14]\n",
+            " [24]\n",
+            " [36]]\n"
+          ]
+        }
+      ],
+      "source": [
+        "my_array_range5 = np.arange(0,5)\n",
+        "my_array_range6 = np.arange(5,10)\n",
+        "reshaped3 = my_array_range5.reshape(5,1)\n",
+        "reshaped4 = my_array_range6.reshape(5,1)\n",
+        "print(reshaped3 + reshaped4)\n",
+        "print(reshaped4 - reshaped3)\n",
+        "print(reshaped3 * reshaped4)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "id": "02fba838",
+      "metadata": {
+        "id": "02fba838"
+      },
+      "source": [
+        "**Q13.** Compute the dot product of:\n",
+        "```python\n",
+        "a = np.array([1, 2])\n",
+        "b = np.array([3, 4])\n",
+        "```"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 41,
+      "id": "d609b73f",
+      "metadata": {
+        "id": "d609b73f",
+        "outputId": "e90785cc-0deb-4791-d25c-849f65741683",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "11\n"
+          ]
+        }
+      ],
+      "source": [
+        "a = np.array([1, 2])\n",
+        "b = np.array([3, 4])\n",
+        "print(np.dot(a, b))"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "id": "53921f8e",
+      "metadata": {
+        "id": "53921f8e"
+      },
+      "source": [
+        "## Practice 7: Mathematical Functions\n",
+        "**Q14.** Use NumPy to compute the square root, exponential, and logarithm of each element in:\n",
+        "```python\n",
+        "arr = np.array([1, 4, 9, 16])\n",
+        "```"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 42,
+      "id": "dbb6ca20",
+      "metadata": {
+        "id": "dbb6ca20",
+        "outputId": "f904d24a-f708-4655-f91d-f372c02bf3de",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "square root:  [1. 2. 3. 4.]\n",
+            "Exponential:  [2.71828183e+00 5.45981500e+01 8.10308393e+03 8.88611052e+06]\n",
+            "Logarithm:  [0.         1.38629436 2.19722458 2.77258872]\n"
+          ]
+        }
+      ],
+      "source": [
+        "arr = np.array([1, 4, 9, 16])\n",
+        "print(\"square root: \",np.sqrt(arr))\n",
+        "print(\"Exponential: \", np.exp(arr))\n",
+        "print(\"Logarithm: \",np.log(arr))\n",
+        "\n"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "id": "5a4140c9",
+      "metadata": {
+        "id": "5a4140c9"
+      },
+      "source": [
+        "## Practice 8: Boolean Indexing and Filtering\n",
+        "**Q15.** Create an array of 10 random integers between 1 and 100. Filter out the even numbers."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 48,
+      "id": "e117ff58",
+      "metadata": {
+        "id": "e117ff58",
+        "outputId": "fe54e0ed-744a-4e61-85f0-0f65ab875b4b",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "[65 63 82  5 56 14 22 30 82 95]\n",
+            "[65 63  5 95]\n"
+          ]
+        }
+      ],
+      "source": [
+        "rng = np.random.default_rng()\n",
+        "x = rng.integers(1,100, size = 10)\n",
+        "\n",
+        "new_array1 = x[x % 2 != 0]\n",
+        "print(x)\n",
+        "print(new_array1)"
+      ]
+    }
+  ],
+  "metadata": {
+    "kernelspec": {
+      "display_name": "Python 3",
+      "language": "python",
+      "name": "python3"
+    },
+    "language_info": {
+      "codemirror_mode": {
+        "name": "ipython",
+        "version": 3
+      },
+      "file_extension": ".py",
+      "mimetype": "text/x-python",
+      "name": "python",
+      "nbconvert_exporter": "python",
+      "pygments_lexer": "ipython3",
+      "version": "3.11.0"
+    },
+    "colab": {
+      "provenance": []
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 5
+}
