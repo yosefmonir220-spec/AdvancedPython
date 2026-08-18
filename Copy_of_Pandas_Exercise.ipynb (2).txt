@@ -1,0 +1,2177 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "pzMUreZ5shWe"
+      },
+      "source": [
+        "## Practice 1: Creating DataFrames and Series"
+      ],
+      "id": "pzMUreZ5shWe"
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "YPHqBziTshWj"
+      },
+      "source": [
+        "**Q1.** Create a Pandas Series from a list of numbers: `[10, 20, 30, 40, 50]`."
+      ],
+      "id": "YPHqBziTshWj"
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "qGnJRutxshWm"
+      },
+      "outputs": [],
+      "source": [
+        "import pandas as pd\n",
+        "pd = pd.Series([10, 20, 30, 40, 50])"
+      ],
+      "id": "qGnJRutxshWm"
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "cj-4FzSEshWq"
+      },
+      "source": [
+        "**Q2.** Create a Pandas DataFrame from the following dictionary:\n",
+        "```python\n",
+        "data = {\n",
+        "    'Name': ['Alice', 'Bob', 'Charlie'],\n",
+        "    'Age': [25, 30, 35],\n",
+        "    'City': ['New York', 'Los Angeles', 'Chicago']\n",
+        "}\n",
+        "```"
+      ],
+      "id": "cj-4FzSEshWq"
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 3,
+      "metadata": {
+        "id": "rhWcDZCqshWr"
+      },
+      "outputs": [],
+      "source": [
+        "import pandas as pd\n",
+        "data = {\n",
+        "    'Name': ['Alice', 'Bob', 'Charlie'],\n",
+        "    'Age': [25, 30, 35],\n",
+        "    'City': ['New York', 'Los Angeles', 'Chicago']\n",
+        "}\n",
+        "df = pd.DataFrame(data)\n"
+      ],
+      "id": "rhWcDZCqshWr"
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "_5Y8EJ42shWt"
+      },
+      "source": [
+        "## Practice 2: Inspecting Data"
+      ],
+      "id": "_5Y8EJ42shWt"
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "-Ga4rS-DshWu"
+      },
+      "source": [
+        "**Q3.** Given the DataFrame `df`, display the first 3 rows.\n",
+        "```python\n",
+        "import pandas as pd\n",
+        "import numpy as np\n",
+        "df = pd.DataFrame(np.random.randn(10, 4), columns=['A', 'B', 'C', 'D'])\n",
+        "```"
+      ],
+      "id": "-Ga4rS-DshWu"
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 4,
+      "metadata": {
+        "id": "m-PZYjZDshWv",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "outputId": "311022b5-2e1d-4b24-a1eb-5556ef5de40a"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "          A         B         C         D\n",
+            "0 -1.176150 -1.159026 -0.635603  0.121677\n",
+            "1 -0.187671  0.397979  0.537651 -0.800241\n",
+            "2  0.999577 -0.841722  0.482705  0.725028\n"
+          ]
+        }
+      ],
+      "source": [
+        "import pandas as pd\n",
+        "import numpy as np\n",
+        "df2 = pd.DataFrame(np.random.randn(10, 4), columns=['A', 'B', 'C', 'D'])\n",
+        "print(df2[0:3])\n"
+      ],
+      "id": "m-PZYjZDshWv"
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "DxCTEGk6shWx"
+      },
+      "source": [
+        "**Q4.** Print the shape and column names of the DataFrame `df2`."
+      ],
+      "id": "DxCTEGk6shWx"
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 5,
+      "metadata": {
+        "id": "8hyMcfvoshWy",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "outputId": "59a16ded-1be2-4bf1-fb3c-4296773c38cb"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "The shape : (10, 4) ****** The column names: Index(['A', 'B', 'C', 'D'], dtype='object')\n"
+          ]
+        }
+      ],
+      "source": [
+        "print(f\"The shape : {df2.shape} ****** The column names: {df2.columns}\")\n"
+      ],
+      "id": "8hyMcfvoshWy"
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "Xbo21ERKshW0"
+      },
+      "source": [
+        "## Practice 3: Selecting and Filtering"
+      ],
+      "id": "Xbo21ERKshW0"
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "a9YXz2ZCshW1"
+      },
+      "source": [
+        "**Q5.** Select the column 'Age' from the DataFrame created in Q2 (`df`)."
+      ],
+      "id": "a9YXz2ZCshW1"
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 6,
+      "metadata": {
+        "id": "xaYQqo14shW2",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "outputId": "bda24f27-247c-4119-d7ef-75cc93228e2c"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "0    25\n",
+            "1    30\n",
+            "2    35\n",
+            "Name: Age, dtype: int64\n"
+          ]
+        }
+      ],
+      "source": [
+        "print(df[\"Age\"])"
+      ],
+      "id": "xaYQqo14shW2"
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "5WXXDW_AshW3"
+      },
+      "source": [
+        "**Q6.** Filter the DataFrame `df` from Q2 to show only rows where 'Age' is greater than 28."
+      ],
+      "id": "5WXXDW_AshW3"
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 9,
+      "metadata": {
+        "id": "YMNecsQ0shW5",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "outputId": "19637283-12f0-4101-aa10-23f753e7ed4c"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "      Name  Age         City\n",
+            "1      Bob   30  Los Angeles\n",
+            "2  Charlie   35      Chicago\n"
+          ]
+        }
+      ],
+      "source": [
+        "print(df[df[\"Age\"] > 28] )"
+      ],
+      "id": "YMNecsQ0shW5"
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "3kn64YRxshW6"
+      },
+      "source": [
+        "## Practice 4: Handling Missing Data"
+      ],
+      "id": "3kn64YRxshW6"
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "NQwe2DOashW7"
+      },
+      "source": [
+        "**Q7.** Given the following DataFrame with missing values, fill the missing values with 0.\n",
+        "```python\n",
+        "import numpy as np\n",
+        "import pandas as pd\n",
+        "df_nan = pd.DataFrame({'A': [1, np.nan, 3], 'B': [4, 5, np.nan]})\n",
+        "```"
+      ],
+      "id": "NQwe2DOashW7"
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 13,
+      "metadata": {
+        "id": "CFZTCSKfshW9",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 143
+        },
+        "outputId": "94677ead-e612-4404-f6ee-40e340387dd4"
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "     A    B\n",
+              "0  1.0  4.0\n",
+              "1  0.0  5.0\n",
+              "2  3.0  0.0"
+            ],
+            "text/html": [
+              "\n",
+              "  <div id=\"df-e7cbc037-499a-466a-a9d8-d86e2debaa2d\" class=\"colab-df-container\">\n",
+              "    <div>\n",
+              "<style scoped>\n",
+              "    .dataframe tbody tr th:only-of-type {\n",
+              "        vertical-align: middle;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe tbody tr th {\n",
+              "        vertical-align: top;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe thead th {\n",
+              "        text-align: right;\n",
+              "    }\n",
+              "</style>\n",
+              "<table border=\"1\" class=\"dataframe\">\n",
+              "  <thead>\n",
+              "    <tr style=\"text-align: right;\">\n",
+              "      <th></th>\n",
+              "      <th>A</th>\n",
+              "      <th>B</th>\n",
+              "    </tr>\n",
+              "  </thead>\n",
+              "  <tbody>\n",
+              "    <tr>\n",
+              "      <th>0</th>\n",
+              "      <td>1.0</td>\n",
+              "      <td>4.0</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>1</th>\n",
+              "      <td>0.0</td>\n",
+              "      <td>5.0</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>2</th>\n",
+              "      <td>3.0</td>\n",
+              "      <td>0.0</td>\n",
+              "    </tr>\n",
+              "  </tbody>\n",
+              "</table>\n",
+              "</div>\n",
+              "    <div class=\"colab-df-buttons\">\n",
+              "\n",
+              "  <div class=\"colab-df-container\">\n",
+              "    <button class=\"colab-df-convert\" onclick=\"convertToInteractive('df-e7cbc037-499a-466a-a9d8-d86e2debaa2d')\"\n",
+              "            title=\"Convert this dataframe to an interactive table.\"\n",
+              "            style=\"display:none;\">\n",
+              "\n",
+              "  <svg xmlns=\"http://www.w3.org/2000/svg\" height=\"24px\" viewBox=\"0 -960 960 960\">\n",
+              "    <path d=\"M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z\"/>\n",
+              "  </svg>\n",
+              "    </button>\n",
+              "\n",
+              "  <style>\n",
+              "    .colab-df-container {\n",
+              "      display:flex;\n",
+              "      gap: 12px;\n",
+              "    }\n",
+              "\n",
+              "    .colab-df-convert {\n",
+              "      background-color: #E8F0FE;\n",
+              "      border: none;\n",
+              "      border-radius: 50%;\n",
+              "      cursor: pointer;\n",
+              "      display: none;\n",
+              "      fill: #1967D2;\n",
+              "      height: 32px;\n",
+              "      padding: 0 0 0 0;\n",
+              "      width: 32px;\n",
+              "    }\n",
+              "\n",
+              "    .colab-df-convert:hover {\n",
+              "      background-color: #E2EBFA;\n",
+              "      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);\n",
+              "      fill: #174EA6;\n",
+              "    }\n",
+              "\n",
+              "    .colab-df-buttons div {\n",
+              "      margin-bottom: 4px;\n",
+              "    }\n",
+              "\n",
+              "    [theme=dark] .colab-df-convert {\n",
+              "      background-color: #3B4455;\n",
+              "      fill: #D2E3FC;\n",
+              "    }\n",
+              "\n",
+              "    [theme=dark] .colab-df-convert:hover {\n",
+              "      background-color: #434B5C;\n",
+              "      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);\n",
+              "      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));\n",
+              "      fill: #FFFFFF;\n",
+              "    }\n",
+              "  </style>\n",
+              "\n",
+              "    <script>\n",
+              "      const buttonEl =\n",
+              "        document.querySelector('#df-e7cbc037-499a-466a-a9d8-d86e2debaa2d button.colab-df-convert');\n",
+              "      buttonEl.style.display =\n",
+              "        google.colab.kernel.accessAllowed ? 'block' : 'none';\n",
+              "\n",
+              "      async function convertToInteractive(key) {\n",
+              "        const element = document.querySelector('#df-e7cbc037-499a-466a-a9d8-d86e2debaa2d');\n",
+              "        const dataTable =\n",
+              "          await google.colab.kernel.invokeFunction('convertToInteractive',\n",
+              "                                                    [key], {});\n",
+              "        if (!dataTable) return;\n",
+              "\n",
+              "        const docLinkHtml = 'Like what you see? Visit the ' +\n",
+              "          '<a target=\"_blank\" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'\n",
+              "          + ' to learn more about interactive tables.';\n",
+              "        element.innerHTML = '';\n",
+              "        dataTable['output_type'] = 'display_data';\n",
+              "        await google.colab.output.renderOutput(dataTable, element);\n",
+              "        const docLink = document.createElement('div');\n",
+              "        docLink.innerHTML = docLinkHtml;\n",
+              "        element.appendChild(docLink);\n",
+              "      }\n",
+              "    </script>\n",
+              "  </div>\n",
+              "\n",
+              "\n",
+              "  <div id=\"id_be070e30-a11d-4e6f-bbcd-61f63d27feb3\">\n",
+              "    <style>\n",
+              "      .colab-df-generate {\n",
+              "        background-color: #E8F0FE;\n",
+              "        border: none;\n",
+              "        border-radius: 50%;\n",
+              "        cursor: pointer;\n",
+              "        display: none;\n",
+              "        fill: #1967D2;\n",
+              "        height: 32px;\n",
+              "        padding: 0 0 0 0;\n",
+              "        width: 32px;\n",
+              "      }\n",
+              "\n",
+              "      .colab-df-generate:hover {\n",
+              "        background-color: #E2EBFA;\n",
+              "        box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);\n",
+              "        fill: #174EA6;\n",
+              "      }\n",
+              "\n",
+              "      [theme=dark] .colab-df-generate {\n",
+              "        background-color: #3B4455;\n",
+              "        fill: #D2E3FC;\n",
+              "      }\n",
+              "\n",
+              "      [theme=dark] .colab-df-generate:hover {\n",
+              "        background-color: #434B5C;\n",
+              "        box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);\n",
+              "        filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));\n",
+              "        fill: #FFFFFF;\n",
+              "      }\n",
+              "    </style>\n",
+              "    <button class=\"colab-df-generate\" onclick=\"generateWithVariable('df_new')\"\n",
+              "            title=\"Generate code using this dataframe.\"\n",
+              "            style=\"display:none;\">\n",
+              "\n",
+              "  <svg xmlns=\"http://www.w3.org/2000/svg\" height=\"24px\"viewBox=\"0 0 24 24\"\n",
+              "       width=\"24px\">\n",
+              "    <path d=\"M7,19H8.4L18.45,9,17,7.55,7,17.6ZM5,21V16.75L18.45,3.32a2,2,0,0,1,2.83,0l1.4,1.43a1.91,1.91,0,0,1,.58,1.4,1.91,1.91,0,0,1-.58,1.4L9.25,21ZM18.45,9,17,7.55Zm-12,3A5.31,5.31,0,0,0,4.9,8.1,5.31,5.31,0,0,0,1,6.5,5.31,5.31,0,0,0,4.9,4.9,5.31,5.31,0,0,0,6.5,1,5.31,5.31,0,0,0,8.1,4.9,5.31,5.31,0,0,0,12,6.5,5.46,5.46,0,0,0,6.5,12Z\"/>\n",
+              "  </svg>\n",
+              "    </button>\n",
+              "    <script>\n",
+              "      (() => {\n",
+              "      const buttonEl =\n",
+              "        document.querySelector('#id_be070e30-a11d-4e6f-bbcd-61f63d27feb3 button.colab-df-generate');\n",
+              "      buttonEl.style.display =\n",
+              "        google.colab.kernel.accessAllowed ? 'block' : 'none';\n",
+              "\n",
+              "      buttonEl.onclick = () => {\n",
+              "        google.colab.notebook.generateWithVariable('df_new');\n",
+              "      }\n",
+              "      })();\n",
+              "    </script>\n",
+              "  </div>\n",
+              "\n",
+              "    </div>\n",
+              "  </div>\n"
+            ],
+            "application/vnd.google.colaboratory.intrinsic+json": {
+              "type": "dataframe",
+              "variable_name": "df_new",
+              "summary": "{\n  \"name\": \"df_new\",\n  \"rows\": 3,\n  \"fields\": [\n    {\n      \"column\": \"A\",\n      \"properties\": {\n        \"dtype\": \"number\",\n        \"std\": 1.5275252316519468,\n        \"min\": 0.0,\n        \"max\": 3.0,\n        \"num_unique_values\": 3,\n        \"samples\": [\n          1.0,\n          0.0,\n          3.0\n        ],\n        \"semantic_type\": \"\",\n        \"description\": \"\"\n      }\n    },\n    {\n      \"column\": \"B\",\n      \"properties\": {\n        \"dtype\": \"number\",\n        \"std\": 2.6457513110645907,\n        \"min\": 0.0,\n        \"max\": 5.0,\n        \"num_unique_values\": 3,\n        \"samples\": [\n          4.0,\n          5.0,\n          0.0\n        ],\n        \"semantic_type\": \"\",\n        \"description\": \"\"\n      }\n    }\n  ]\n}"
+            }
+          },
+          "metadata": {},
+          "execution_count": 13
+        }
+      ],
+      "source": [
+        "import numpy as np\n",
+        "import pandas as pd\n",
+        "df_nan = pd.DataFrame({'A': [1, np.nan, 3], 'B': [4, 5, np.nan]})\n",
+        "df_new = df_nan.fillna(0)\n",
+        "df_new"
+      ],
+      "id": "CFZTCSKfshW9"
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "mjuBwlE2shW_"
+      },
+      "source": [
+        "**Q8.** Drop the rows containing any missing values in `df_nan`."
+      ],
+      "id": "mjuBwlE2shW_"
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 15,
+      "metadata": {
+        "id": "1IrChlQLshXA",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 89
+        },
+        "outputId": "d3f1df64-59df-415a-e551-7f142e187c4f"
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "     A    B\n",
+              "0  1.0  4.0"
+            ],
+            "text/html": [
+              "\n",
+              "  <div id=\"df-0fbbaaac-e074-437d-bd60-632ab65d66eb\" class=\"colab-df-container\">\n",
+              "    <div>\n",
+              "<style scoped>\n",
+              "    .dataframe tbody tr th:only-of-type {\n",
+              "        vertical-align: middle;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe tbody tr th {\n",
+              "        vertical-align: top;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe thead th {\n",
+              "        text-align: right;\n",
+              "    }\n",
+              "</style>\n",
+              "<table border=\"1\" class=\"dataframe\">\n",
+              "  <thead>\n",
+              "    <tr style=\"text-align: right;\">\n",
+              "      <th></th>\n",
+              "      <th>A</th>\n",
+              "      <th>B</th>\n",
+              "    </tr>\n",
+              "  </thead>\n",
+              "  <tbody>\n",
+              "    <tr>\n",
+              "      <th>0</th>\n",
+              "      <td>1.0</td>\n",
+              "      <td>4.0</td>\n",
+              "    </tr>\n",
+              "  </tbody>\n",
+              "</table>\n",
+              "</div>\n",
+              "    <div class=\"colab-df-buttons\">\n",
+              "\n",
+              "  <div class=\"colab-df-container\">\n",
+              "    <button class=\"colab-df-convert\" onclick=\"convertToInteractive('df-0fbbaaac-e074-437d-bd60-632ab65d66eb')\"\n",
+              "            title=\"Convert this dataframe to an interactive table.\"\n",
+              "            style=\"display:none;\">\n",
+              "\n",
+              "  <svg xmlns=\"http://www.w3.org/2000/svg\" height=\"24px\" viewBox=\"0 -960 960 960\">\n",
+              "    <path d=\"M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z\"/>\n",
+              "  </svg>\n",
+              "    </button>\n",
+              "\n",
+              "  <style>\n",
+              "    .colab-df-container {\n",
+              "      display:flex;\n",
+              "      gap: 12px;\n",
+              "    }\n",
+              "\n",
+              "    .colab-df-convert {\n",
+              "      background-color: #E8F0FE;\n",
+              "      border: none;\n",
+              "      border-radius: 50%;\n",
+              "      cursor: pointer;\n",
+              "      display: none;\n",
+              "      fill: #1967D2;\n",
+              "      height: 32px;\n",
+              "      padding: 0 0 0 0;\n",
+              "      width: 32px;\n",
+              "    }\n",
+              "\n",
+              "    .colab-df-convert:hover {\n",
+              "      background-color: #E2EBFA;\n",
+              "      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);\n",
+              "      fill: #174EA6;\n",
+              "    }\n",
+              "\n",
+              "    .colab-df-buttons div {\n",
+              "      margin-bottom: 4px;\n",
+              "    }\n",
+              "\n",
+              "    [theme=dark] .colab-df-convert {\n",
+              "      background-color: #3B4455;\n",
+              "      fill: #D2E3FC;\n",
+              "    }\n",
+              "\n",
+              "    [theme=dark] .colab-df-convert:hover {\n",
+              "      background-color: #434B5C;\n",
+              "      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);\n",
+              "      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));\n",
+              "      fill: #FFFFFF;\n",
+              "    }\n",
+              "  </style>\n",
+              "\n",
+              "    <script>\n",
+              "      const buttonEl =\n",
+              "        document.querySelector('#df-0fbbaaac-e074-437d-bd60-632ab65d66eb button.colab-df-convert');\n",
+              "      buttonEl.style.display =\n",
+              "        google.colab.kernel.accessAllowed ? 'block' : 'none';\n",
+              "\n",
+              "      async function convertToInteractive(key) {\n",
+              "        const element = document.querySelector('#df-0fbbaaac-e074-437d-bd60-632ab65d66eb');\n",
+              "        const dataTable =\n",
+              "          await google.colab.kernel.invokeFunction('convertToInteractive',\n",
+              "                                                    [key], {});\n",
+              "        if (!dataTable) return;\n",
+              "\n",
+              "        const docLinkHtml = 'Like what you see? Visit the ' +\n",
+              "          '<a target=\"_blank\" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'\n",
+              "          + ' to learn more about interactive tables.';\n",
+              "        element.innerHTML = '';\n",
+              "        dataTable['output_type'] = 'display_data';\n",
+              "        await google.colab.output.renderOutput(dataTable, element);\n",
+              "        const docLink = document.createElement('div');\n",
+              "        docLink.innerHTML = docLinkHtml;\n",
+              "        element.appendChild(docLink);\n",
+              "      }\n",
+              "    </script>\n",
+              "  </div>\n",
+              "\n",
+              "\n",
+              "  <div id=\"id_a3635d68-f790-4f88-905e-3349dbe645a7\">\n",
+              "    <style>\n",
+              "      .colab-df-generate {\n",
+              "        background-color: #E8F0FE;\n",
+              "        border: none;\n",
+              "        border-radius: 50%;\n",
+              "        cursor: pointer;\n",
+              "        display: none;\n",
+              "        fill: #1967D2;\n",
+              "        height: 32px;\n",
+              "        padding: 0 0 0 0;\n",
+              "        width: 32px;\n",
+              "      }\n",
+              "\n",
+              "      .colab-df-generate:hover {\n",
+              "        background-color: #E2EBFA;\n",
+              "        box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);\n",
+              "        fill: #174EA6;\n",
+              "      }\n",
+              "\n",
+              "      [theme=dark] .colab-df-generate {\n",
+              "        background-color: #3B4455;\n",
+              "        fill: #D2E3FC;\n",
+              "      }\n",
+              "\n",
+              "      [theme=dark] .colab-df-generate:hover {\n",
+              "        background-color: #434B5C;\n",
+              "        box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);\n",
+              "        filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));\n",
+              "        fill: #FFFFFF;\n",
+              "      }\n",
+              "    </style>\n",
+              "    <button class=\"colab-df-generate\" onclick=\"generateWithVariable('df_nan')\"\n",
+              "            title=\"Generate code using this dataframe.\"\n",
+              "            style=\"display:none;\">\n",
+              "\n",
+              "  <svg xmlns=\"http://www.w3.org/2000/svg\" height=\"24px\"viewBox=\"0 0 24 24\"\n",
+              "       width=\"24px\">\n",
+              "    <path d=\"M7,19H8.4L18.45,9,17,7.55,7,17.6ZM5,21V16.75L18.45,3.32a2,2,0,0,1,2.83,0l1.4,1.43a1.91,1.91,0,0,1,.58,1.4,1.91,1.91,0,0,1-.58,1.4L9.25,21ZM18.45,9,17,7.55Zm-12,3A5.31,5.31,0,0,0,4.9,8.1,5.31,5.31,0,0,0,1,6.5,5.31,5.31,0,0,0,4.9,4.9,5.31,5.31,0,0,0,6.5,1,5.31,5.31,0,0,0,8.1,4.9,5.31,5.31,0,0,0,12,6.5,5.46,5.46,0,0,0,6.5,12Z\"/>\n",
+              "  </svg>\n",
+              "    </button>\n",
+              "    <script>\n",
+              "      (() => {\n",
+              "      const buttonEl =\n",
+              "        document.querySelector('#id_a3635d68-f790-4f88-905e-3349dbe645a7 button.colab-df-generate');\n",
+              "      buttonEl.style.display =\n",
+              "        google.colab.kernel.accessAllowed ? 'block' : 'none';\n",
+              "\n",
+              "      buttonEl.onclick = () => {\n",
+              "        google.colab.notebook.generateWithVariable('df_nan');\n",
+              "      }\n",
+              "      })();\n",
+              "    </script>\n",
+              "  </div>\n",
+              "\n",
+              "    </div>\n",
+              "  </div>\n"
+            ],
+            "application/vnd.google.colaboratory.intrinsic+json": {
+              "type": "dataframe",
+              "variable_name": "df_nan",
+              "summary": "{\n  \"name\": \"df_nan\",\n  \"rows\": 1,\n  \"fields\": [\n    {\n      \"column\": \"A\",\n      \"properties\": {\n        \"dtype\": \"number\",\n        \"std\": null,\n        \"min\": 1.0,\n        \"max\": 1.0,\n        \"num_unique_values\": 1,\n        \"samples\": [\n          1.0\n        ],\n        \"semantic_type\": \"\",\n        \"description\": \"\"\n      }\n    },\n    {\n      \"column\": \"B\",\n      \"properties\": {\n        \"dtype\": \"number\",\n        \"std\": null,\n        \"min\": 4.0,\n        \"max\": 4.0,\n        \"num_unique_values\": 1,\n        \"samples\": [\n          4.0\n        ],\n        \"semantic_type\": \"\",\n        \"description\": \"\"\n      }\n    }\n  ]\n}"
+            }
+          },
+          "metadata": {},
+          "execution_count": 15
+        }
+      ],
+      "source": [
+        "df_nan = df_nan.dropna()\n",
+        "df_nan"
+      ],
+      "id": "1IrChlQLshXA"
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "569-YnR7shXB"
+      },
+      "source": [
+        "## Practice 5: Grouping and Aggregation"
+      ],
+      "id": "569-YnR7shXB"
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "ikPGTDaAshXC"
+      },
+      "source": [
+        "**Q9.** Group the following DataFrame by 'Department' and calculate the mean salary.\n",
+        "```python\n",
+        "data = {\n",
+        "    'Department': ['IT', 'HR', 'IT', 'Finance', 'HR'],\n",
+        "    'Salary': [60000, 50000, 70000, 80000, 55000]\n",
+        "}\n",
+        "df_emp = pd.DataFrame(data)\n",
+        "```"
+      ],
+      "id": "ikPGTDaAshXC"
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 40,
+      "metadata": {
+        "id": "1tdIzm3IshXD",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "outputId": "8c84949e-e0c6-43e3-9817-abb0c252dc03"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "The mean salary :  Department\n",
+            "Finance    80000.0\n",
+            "HR         52500.0\n",
+            "IT         65000.0\n",
+            "Name: Salary, dtype: float64\n"
+          ]
+        }
+      ],
+      "source": [
+        "data = {\n",
+        "'Department': ['IT', 'HR', 'IT', 'Finance', 'HR'],\n",
+        "'Salary': [60000, 50000, 70000, 80000, 55000]\n",
+        "}\n",
+        "df_emp = pd.DataFrame(data)\n",
+        "df_emp\n",
+        "group_departement = df_emp.groupby(\"Department\")\n",
+        "print(\"The mean salary : \", group_departement[\"Salary\"].mean())"
+      ],
+      "id": "1tdIzm3IshXD"
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "kow8o8_UshXF"
+      },
+      "source": [
+        "## Practice 6: Adding and Removing Columns"
+      ],
+      "id": "kow8o8_UshXF"
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "seK64Wf8shXF"
+      },
+      "source": [
+        "**Q10.** Add a new column 'Bonus' to `df_emp` which is 10% of the 'Salary'."
+      ],
+      "id": "seK64Wf8shXF"
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 22,
+      "metadata": {
+        "id": "Wg9L3BAOshXG",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "outputId": "b01de9bf-61b1-4a8d-c1f6-c68376047baa"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "  Department  Salary   Bonus\n",
+            "0         IT   60000  6000.0\n",
+            "1         HR   50000  5000.0\n",
+            "2         IT   70000  7000.0\n",
+            "3    Finance   80000  8000.0\n",
+            "4         HR   55000  5500.0\n"
+          ]
+        }
+      ],
+      "source": [
+        "df_emp[\"Bonus\"] = df_emp[\"Salary\"].apply(lambda x:0.1 * x)\n",
+        "print(df_emp)"
+      ],
+      "id": "Wg9L3BAOshXG"
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "qfWBi1DzshXH"
+      },
+      "source": [
+        "**Q11.** Drop the 'Bonus' column from `df_emp`."
+      ],
+      "id": "qfWBi1DzshXH"
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 38,
+      "metadata": {
+        "id": "V18XsvZDshXJ",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 241
+        },
+        "outputId": "d7954400-4b9e-42a2-fa88-5e00ac566cb2"
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "0    6000.0\n",
+              "1    5000.0\n",
+              "2    7000.0\n",
+              "3    8000.0\n",
+              "4    5500.0\n",
+              "Name: Salary, dtype: float64"
+            ],
+            "text/html": [
+              "<div>\n",
+              "<style scoped>\n",
+              "    .dataframe tbody tr th:only-of-type {\n",
+              "        vertical-align: middle;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe tbody tr th {\n",
+              "        vertical-align: top;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe thead th {\n",
+              "        text-align: right;\n",
+              "    }\n",
+              "</style>\n",
+              "<table border=\"1\" class=\"dataframe\">\n",
+              "  <thead>\n",
+              "    <tr style=\"text-align: right;\">\n",
+              "      <th></th>\n",
+              "      <th>Salary</th>\n",
+              "    </tr>\n",
+              "  </thead>\n",
+              "  <tbody>\n",
+              "    <tr>\n",
+              "      <th>0</th>\n",
+              "      <td>6000.0</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>1</th>\n",
+              "      <td>5000.0</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>2</th>\n",
+              "      <td>7000.0</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>3</th>\n",
+              "      <td>8000.0</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>4</th>\n",
+              "      <td>5500.0</td>\n",
+              "    </tr>\n",
+              "  </tbody>\n",
+              "</table>\n",
+              "</div><br><label><b>dtype:</b> float64</label>"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 38
+        }
+      ],
+      "source": [
+        "df_emp = df_emp.drop(columns=[\"Bonus\"])\n",
+        "df_emp"
+      ],
+      "id": "V18XsvZDshXJ"
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "DRw9h5QHshXJ"
+      },
+      "source": [
+        "## Practice 7: Applying Functions"
+      ],
+      "id": "DRw9h5QHshXJ"
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "Nzw56B2ashXK"
+      },
+      "source": [
+        "**Q12.** Apply a function or a lambda to convert the 'Department' names to lowercase in `df_emp`."
+      ],
+      "id": "Nzw56B2ashXK"
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 29,
+      "metadata": {
+        "id": "xZBNFaRXshXL",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 206
+        },
+        "outputId": "2cb488c1-2524-4b3f-898b-00d1b05c0eb4"
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "  Department  Salary   Bonus\n",
+              "0         it   60000  6000.0\n",
+              "1         hr   50000  5000.0\n",
+              "2         it   70000  7000.0\n",
+              "3    finance   80000  8000.0\n",
+              "4         hr   55000  5500.0"
+            ],
+            "text/html": [
+              "\n",
+              "  <div id=\"df-b6e1f46b-4bdc-4ff6-ac46-e98ac3ab7094\" class=\"colab-df-container\">\n",
+              "    <div>\n",
+              "<style scoped>\n",
+              "    .dataframe tbody tr th:only-of-type {\n",
+              "        vertical-align: middle;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe tbody tr th {\n",
+              "        vertical-align: top;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe thead th {\n",
+              "        text-align: right;\n",
+              "    }\n",
+              "</style>\n",
+              "<table border=\"1\" class=\"dataframe\">\n",
+              "  <thead>\n",
+              "    <tr style=\"text-align: right;\">\n",
+              "      <th></th>\n",
+              "      <th>Department</th>\n",
+              "      <th>Salary</th>\n",
+              "      <th>Bonus</th>\n",
+              "    </tr>\n",
+              "  </thead>\n",
+              "  <tbody>\n",
+              "    <tr>\n",
+              "      <th>0</th>\n",
+              "      <td>it</td>\n",
+              "      <td>60000</td>\n",
+              "      <td>6000.0</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>1</th>\n",
+              "      <td>hr</td>\n",
+              "      <td>50000</td>\n",
+              "      <td>5000.0</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>2</th>\n",
+              "      <td>it</td>\n",
+              "      <td>70000</td>\n",
+              "      <td>7000.0</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>3</th>\n",
+              "      <td>finance</td>\n",
+              "      <td>80000</td>\n",
+              "      <td>8000.0</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>4</th>\n",
+              "      <td>hr</td>\n",
+              "      <td>55000</td>\n",
+              "      <td>5500.0</td>\n",
+              "    </tr>\n",
+              "  </tbody>\n",
+              "</table>\n",
+              "</div>\n",
+              "    <div class=\"colab-df-buttons\">\n",
+              "\n",
+              "  <div class=\"colab-df-container\">\n",
+              "    <button class=\"colab-df-convert\" onclick=\"convertToInteractive('df-b6e1f46b-4bdc-4ff6-ac46-e98ac3ab7094')\"\n",
+              "            title=\"Convert this dataframe to an interactive table.\"\n",
+              "            style=\"display:none;\">\n",
+              "\n",
+              "  <svg xmlns=\"http://www.w3.org/2000/svg\" height=\"24px\" viewBox=\"0 -960 960 960\">\n",
+              "    <path d=\"M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z\"/>\n",
+              "  </svg>\n",
+              "    </button>\n",
+              "\n",
+              "  <style>\n",
+              "    .colab-df-container {\n",
+              "      display:flex;\n",
+              "      gap: 12px;\n",
+              "    }\n",
+              "\n",
+              "    .colab-df-convert {\n",
+              "      background-color: #E8F0FE;\n",
+              "      border: none;\n",
+              "      border-radius: 50%;\n",
+              "      cursor: pointer;\n",
+              "      display: none;\n",
+              "      fill: #1967D2;\n",
+              "      height: 32px;\n",
+              "      padding: 0 0 0 0;\n",
+              "      width: 32px;\n",
+              "    }\n",
+              "\n",
+              "    .colab-df-convert:hover {\n",
+              "      background-color: #E2EBFA;\n",
+              "      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);\n",
+              "      fill: #174EA6;\n",
+              "    }\n",
+              "\n",
+              "    .colab-df-buttons div {\n",
+              "      margin-bottom: 4px;\n",
+              "    }\n",
+              "\n",
+              "    [theme=dark] .colab-df-convert {\n",
+              "      background-color: #3B4455;\n",
+              "      fill: #D2E3FC;\n",
+              "    }\n",
+              "\n",
+              "    [theme=dark] .colab-df-convert:hover {\n",
+              "      background-color: #434B5C;\n",
+              "      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);\n",
+              "      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));\n",
+              "      fill: #FFFFFF;\n",
+              "    }\n",
+              "  </style>\n",
+              "\n",
+              "    <script>\n",
+              "      const buttonEl =\n",
+              "        document.querySelector('#df-b6e1f46b-4bdc-4ff6-ac46-e98ac3ab7094 button.colab-df-convert');\n",
+              "      buttonEl.style.display =\n",
+              "        google.colab.kernel.accessAllowed ? 'block' : 'none';\n",
+              "\n",
+              "      async function convertToInteractive(key) {\n",
+              "        const element = document.querySelector('#df-b6e1f46b-4bdc-4ff6-ac46-e98ac3ab7094');\n",
+              "        const dataTable =\n",
+              "          await google.colab.kernel.invokeFunction('convertToInteractive',\n",
+              "                                                    [key], {});\n",
+              "        if (!dataTable) return;\n",
+              "\n",
+              "        const docLinkHtml = 'Like what you see? Visit the ' +\n",
+              "          '<a target=\"_blank\" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'\n",
+              "          + ' to learn more about interactive tables.';\n",
+              "        element.innerHTML = '';\n",
+              "        dataTable['output_type'] = 'display_data';\n",
+              "        await google.colab.output.renderOutput(dataTable, element);\n",
+              "        const docLink = document.createElement('div');\n",
+              "        docLink.innerHTML = docLinkHtml;\n",
+              "        element.appendChild(docLink);\n",
+              "      }\n",
+              "    </script>\n",
+              "  </div>\n",
+              "\n",
+              "\n",
+              "  <div id=\"id_c48816b8-16a5-45e8-a1f7-3ea33f0a793c\">\n",
+              "    <style>\n",
+              "      .colab-df-generate {\n",
+              "        background-color: #E8F0FE;\n",
+              "        border: none;\n",
+              "        border-radius: 50%;\n",
+              "        cursor: pointer;\n",
+              "        display: none;\n",
+              "        fill: #1967D2;\n",
+              "        height: 32px;\n",
+              "        padding: 0 0 0 0;\n",
+              "        width: 32px;\n",
+              "      }\n",
+              "\n",
+              "      .colab-df-generate:hover {\n",
+              "        background-color: #E2EBFA;\n",
+              "        box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);\n",
+              "        fill: #174EA6;\n",
+              "      }\n",
+              "\n",
+              "      [theme=dark] .colab-df-generate {\n",
+              "        background-color: #3B4455;\n",
+              "        fill: #D2E3FC;\n",
+              "      }\n",
+              "\n",
+              "      [theme=dark] .colab-df-generate:hover {\n",
+              "        background-color: #434B5C;\n",
+              "        box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);\n",
+              "        filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));\n",
+              "        fill: #FFFFFF;\n",
+              "      }\n",
+              "    </style>\n",
+              "    <button class=\"colab-df-generate\" onclick=\"generateWithVariable('df_emp')\"\n",
+              "            title=\"Generate code using this dataframe.\"\n",
+              "            style=\"display:none;\">\n",
+              "\n",
+              "  <svg xmlns=\"http://www.w3.org/2000/svg\" height=\"24px\"viewBox=\"0 0 24 24\"\n",
+              "       width=\"24px\">\n",
+              "    <path d=\"M7,19H8.4L18.45,9,17,7.55,7,17.6ZM5,21V16.75L18.45,3.32a2,2,0,0,1,2.83,0l1.4,1.43a1.91,1.91,0,0,1,.58,1.4,1.91,1.91,0,0,1-.58,1.4L9.25,21ZM18.45,9,17,7.55Zm-12,3A5.31,5.31,0,0,0,4.9,8.1,5.31,5.31,0,0,0,1,6.5,5.31,5.31,0,0,0,4.9,4.9,5.31,5.31,0,0,0,6.5,1,5.31,5.31,0,0,0,8.1,4.9,5.31,5.31,0,0,0,12,6.5,5.46,5.46,0,0,0,6.5,12Z\"/>\n",
+              "  </svg>\n",
+              "    </button>\n",
+              "    <script>\n",
+              "      (() => {\n",
+              "      const buttonEl =\n",
+              "        document.querySelector('#id_c48816b8-16a5-45e8-a1f7-3ea33f0a793c button.colab-df-generate');\n",
+              "      buttonEl.style.display =\n",
+              "        google.colab.kernel.accessAllowed ? 'block' : 'none';\n",
+              "\n",
+              "      buttonEl.onclick = () => {\n",
+              "        google.colab.notebook.generateWithVariable('df_emp');\n",
+              "      }\n",
+              "      })();\n",
+              "    </script>\n",
+              "  </div>\n",
+              "\n",
+              "    </div>\n",
+              "  </div>\n"
+            ],
+            "application/vnd.google.colaboratory.intrinsic+json": {
+              "type": "dataframe",
+              "variable_name": "df_emp",
+              "summary": "{\n  \"name\": \"df_emp\",\n  \"rows\": 5,\n  \"fields\": [\n    {\n      \"column\": \"Department\",\n      \"properties\": {\n        \"dtype\": \"string\",\n        \"num_unique_values\": 3,\n        \"samples\": [\n          \"it\",\n          \"hr\",\n          \"finance\"\n        ],\n        \"semantic_type\": \"\",\n        \"description\": \"\"\n      }\n    },\n    {\n      \"column\": \"Salary\",\n      \"properties\": {\n        \"dtype\": \"number\",\n        \"std\": 12041,\n        \"min\": 50000,\n        \"max\": 80000,\n        \"num_unique_values\": 5,\n        \"samples\": [\n          50000,\n          55000,\n          70000\n        ],\n        \"semantic_type\": \"\",\n        \"description\": \"\"\n      }\n    },\n    {\n      \"column\": \"Bonus\",\n      \"properties\": {\n        \"dtype\": \"number\",\n        \"std\": 1204.1594578792296,\n        \"min\": 5000.0,\n        \"max\": 8000.0,\n        \"num_unique_values\": 5,\n        \"samples\": [\n          5000.0,\n          5500.0,\n          7000.0\n        ],\n        \"semantic_type\": \"\",\n        \"description\": \"\"\n      }\n    }\n  ]\n}"
+            }
+          },
+          "metadata": {},
+          "execution_count": 29
+        }
+      ],
+      "source": [
+        "df_emp['Department'] = df_emp['Department'].apply(lambda x: x.lower())\n",
+        "df_emp"
+      ],
+      "id": "xZBNFaRXshXL"
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "M0BXp9drshXL"
+      },
+      "source": [
+        "## Practice 8: Merging and Joining"
+      ],
+      "id": "M0BXp9drshXL"
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "P6HOmO6ishXM"
+      },
+      "source": [
+        "**Q13.** Create a DataFrame `df_dept` with columns `Department` and `Manager` mapping 'IT' to 'Alice', 'HR' to 'Bob', and 'Finance' to 'Charlie'. Merge it with `df_emp` (from Practice 5) using a left join."
+      ],
+      "id": "P6HOmO6ishXM"
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 42,
+      "metadata": {
+        "id": "_aT2davxshXN",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 206
+        },
+        "outputId": "67a544bc-7be7-4e72-cf29-4bae68a3efa1"
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "  Department  Manager  Salary\n",
+              "0         IT    Alice   60000\n",
+              "1         IT    Alice   70000\n",
+              "2         HR      Bob   50000\n",
+              "3         HR      Bob   55000\n",
+              "4    Finance  Charlie   80000"
+            ],
+            "text/html": [
+              "\n",
+              "  <div id=\"df-85ee5ced-1328-4e5a-8824-f73e6bba9d8b\" class=\"colab-df-container\">\n",
+              "    <div>\n",
+              "<style scoped>\n",
+              "    .dataframe tbody tr th:only-of-type {\n",
+              "        vertical-align: middle;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe tbody tr th {\n",
+              "        vertical-align: top;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe thead th {\n",
+              "        text-align: right;\n",
+              "    }\n",
+              "</style>\n",
+              "<table border=\"1\" class=\"dataframe\">\n",
+              "  <thead>\n",
+              "    <tr style=\"text-align: right;\">\n",
+              "      <th></th>\n",
+              "      <th>Department</th>\n",
+              "      <th>Manager</th>\n",
+              "      <th>Salary</th>\n",
+              "    </tr>\n",
+              "  </thead>\n",
+              "  <tbody>\n",
+              "    <tr>\n",
+              "      <th>0</th>\n",
+              "      <td>IT</td>\n",
+              "      <td>Alice</td>\n",
+              "      <td>60000</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>1</th>\n",
+              "      <td>IT</td>\n",
+              "      <td>Alice</td>\n",
+              "      <td>70000</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>2</th>\n",
+              "      <td>HR</td>\n",
+              "      <td>Bob</td>\n",
+              "      <td>50000</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>3</th>\n",
+              "      <td>HR</td>\n",
+              "      <td>Bob</td>\n",
+              "      <td>55000</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>4</th>\n",
+              "      <td>Finance</td>\n",
+              "      <td>Charlie</td>\n",
+              "      <td>80000</td>\n",
+              "    </tr>\n",
+              "  </tbody>\n",
+              "</table>\n",
+              "</div>\n",
+              "    <div class=\"colab-df-buttons\">\n",
+              "\n",
+              "  <div class=\"colab-df-container\">\n",
+              "    <button class=\"colab-df-convert\" onclick=\"convertToInteractive('df-85ee5ced-1328-4e5a-8824-f73e6bba9d8b')\"\n",
+              "            title=\"Convert this dataframe to an interactive table.\"\n",
+              "            style=\"display:none;\">\n",
+              "\n",
+              "  <svg xmlns=\"http://www.w3.org/2000/svg\" height=\"24px\" viewBox=\"0 -960 960 960\">\n",
+              "    <path d=\"M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z\"/>\n",
+              "  </svg>\n",
+              "    </button>\n",
+              "\n",
+              "  <style>\n",
+              "    .colab-df-container {\n",
+              "      display:flex;\n",
+              "      gap: 12px;\n",
+              "    }\n",
+              "\n",
+              "    .colab-df-convert {\n",
+              "      background-color: #E8F0FE;\n",
+              "      border: none;\n",
+              "      border-radius: 50%;\n",
+              "      cursor: pointer;\n",
+              "      display: none;\n",
+              "      fill: #1967D2;\n",
+              "      height: 32px;\n",
+              "      padding: 0 0 0 0;\n",
+              "      width: 32px;\n",
+              "    }\n",
+              "\n",
+              "    .colab-df-convert:hover {\n",
+              "      background-color: #E2EBFA;\n",
+              "      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);\n",
+              "      fill: #174EA6;\n",
+              "    }\n",
+              "\n",
+              "    .colab-df-buttons div {\n",
+              "      margin-bottom: 4px;\n",
+              "    }\n",
+              "\n",
+              "    [theme=dark] .colab-df-convert {\n",
+              "      background-color: #3B4455;\n",
+              "      fill: #D2E3FC;\n",
+              "    }\n",
+              "\n",
+              "    [theme=dark] .colab-df-convert:hover {\n",
+              "      background-color: #434B5C;\n",
+              "      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);\n",
+              "      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));\n",
+              "      fill: #FFFFFF;\n",
+              "    }\n",
+              "  </style>\n",
+              "\n",
+              "    <script>\n",
+              "      const buttonEl =\n",
+              "        document.querySelector('#df-85ee5ced-1328-4e5a-8824-f73e6bba9d8b button.colab-df-convert');\n",
+              "      buttonEl.style.display =\n",
+              "        google.colab.kernel.accessAllowed ? 'block' : 'none';\n",
+              "\n",
+              "      async function convertToInteractive(key) {\n",
+              "        const element = document.querySelector('#df-85ee5ced-1328-4e5a-8824-f73e6bba9d8b');\n",
+              "        const dataTable =\n",
+              "          await google.colab.kernel.invokeFunction('convertToInteractive',\n",
+              "                                                    [key], {});\n",
+              "        if (!dataTable) return;\n",
+              "\n",
+              "        const docLinkHtml = 'Like what you see? Visit the ' +\n",
+              "          '<a target=\"_blank\" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'\n",
+              "          + ' to learn more about interactive tables.';\n",
+              "        element.innerHTML = '';\n",
+              "        dataTable['output_type'] = 'display_data';\n",
+              "        await google.colab.output.renderOutput(dataTable, element);\n",
+              "        const docLink = document.createElement('div');\n",
+              "        docLink.innerHTML = docLinkHtml;\n",
+              "        element.appendChild(docLink);\n",
+              "      }\n",
+              "    </script>\n",
+              "  </div>\n",
+              "\n",
+              "\n",
+              "  <div id=\"id_be1d83f5-1380-4146-9500-fb2f16bad0fb\">\n",
+              "    <style>\n",
+              "      .colab-df-generate {\n",
+              "        background-color: #E8F0FE;\n",
+              "        border: none;\n",
+              "        border-radius: 50%;\n",
+              "        cursor: pointer;\n",
+              "        display: none;\n",
+              "        fill: #1967D2;\n",
+              "        height: 32px;\n",
+              "        padding: 0 0 0 0;\n",
+              "        width: 32px;\n",
+              "      }\n",
+              "\n",
+              "      .colab-df-generate:hover {\n",
+              "        background-color: #E2EBFA;\n",
+              "        box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);\n",
+              "        fill: #174EA6;\n",
+              "      }\n",
+              "\n",
+              "      [theme=dark] .colab-df-generate {\n",
+              "        background-color: #3B4455;\n",
+              "        fill: #D2E3FC;\n",
+              "      }\n",
+              "\n",
+              "      [theme=dark] .colab-df-generate:hover {\n",
+              "        background-color: #434B5C;\n",
+              "        box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);\n",
+              "        filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));\n",
+              "        fill: #FFFFFF;\n",
+              "      }\n",
+              "    </style>\n",
+              "    <button class=\"colab-df-generate\" onclick=\"generateWithVariable('left_join')\"\n",
+              "            title=\"Generate code using this dataframe.\"\n",
+              "            style=\"display:none;\">\n",
+              "\n",
+              "  <svg xmlns=\"http://www.w3.org/2000/svg\" height=\"24px\"viewBox=\"0 0 24 24\"\n",
+              "       width=\"24px\">\n",
+              "    <path d=\"M7,19H8.4L18.45,9,17,7.55,7,17.6ZM5,21V16.75L18.45,3.32a2,2,0,0,1,2.83,0l1.4,1.43a1.91,1.91,0,0,1,.58,1.4,1.91,1.91,0,0,1-.58,1.4L9.25,21ZM18.45,9,17,7.55Zm-12,3A5.31,5.31,0,0,0,4.9,8.1,5.31,5.31,0,0,0,1,6.5,5.31,5.31,0,0,0,4.9,4.9,5.31,5.31,0,0,0,6.5,1,5.31,5.31,0,0,0,8.1,4.9,5.31,5.31,0,0,0,12,6.5,5.46,5.46,0,0,0,6.5,12Z\"/>\n",
+              "  </svg>\n",
+              "    </button>\n",
+              "    <script>\n",
+              "      (() => {\n",
+              "      const buttonEl =\n",
+              "        document.querySelector('#id_be1d83f5-1380-4146-9500-fb2f16bad0fb button.colab-df-generate');\n",
+              "      buttonEl.style.display =\n",
+              "        google.colab.kernel.accessAllowed ? 'block' : 'none';\n",
+              "\n",
+              "      buttonEl.onclick = () => {\n",
+              "        google.colab.notebook.generateWithVariable('left_join');\n",
+              "      }\n",
+              "      })();\n",
+              "    </script>\n",
+              "  </div>\n",
+              "\n",
+              "    </div>\n",
+              "  </div>\n"
+            ],
+            "application/vnd.google.colaboratory.intrinsic+json": {
+              "type": "dataframe",
+              "variable_name": "left_join",
+              "summary": "{\n  \"name\": \"left_join\",\n  \"rows\": 5,\n  \"fields\": [\n    {\n      \"column\": \"Department\",\n      \"properties\": {\n        \"dtype\": \"string\",\n        \"num_unique_values\": 3,\n        \"samples\": [\n          \"IT\",\n          \"HR\",\n          \"Finance\"\n        ],\n        \"semantic_type\": \"\",\n        \"description\": \"\"\n      }\n    },\n    {\n      \"column\": \"Manager\",\n      \"properties\": {\n        \"dtype\": \"string\",\n        \"num_unique_values\": 3,\n        \"samples\": [\n          \"Alice\",\n          \"Bob\",\n          \"Charlie\"\n        ],\n        \"semantic_type\": \"\",\n        \"description\": \"\"\n      }\n    },\n    {\n      \"column\": \"Salary\",\n      \"properties\": {\n        \"dtype\": \"number\",\n        \"std\": 12041,\n        \"min\": 50000,\n        \"max\": 80000,\n        \"num_unique_values\": 5,\n        \"samples\": [\n          70000,\n          80000,\n          50000\n        ],\n        \"semantic_type\": \"\",\n        \"description\": \"\"\n      }\n    }\n  ]\n}"
+            }
+          },
+          "metadata": {},
+          "execution_count": 42
+        }
+      ],
+      "source": [
+        "df_dept = pd.DataFrame({'Department': ['IT', 'HR', 'Finance'], 'Manager': ['Alice', 'Bob', 'Charlie']})\n",
+        "left_join = pd.merge(df_dept,df_emp,on=\"Department\", how=\"left\")\n",
+        "left_join"
+      ],
+      "id": "_aT2davxshXN"
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "dFk22-hSshXN"
+      },
+      "source": [
+        "## Practice 9: Pivot Tables"
+      ],
+      "id": "dFk22-hSshXN"
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "987f5qekshXO"
+      },
+      "source": [
+        "**Q14.** Create a pivot table from the merged DataFrame that shows the total (sum) and average (mean) salary for each manager."
+      ],
+      "id": "987f5qekshXO"
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 47,
+      "metadata": {
+        "id": "xLpDd-YKshXP",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 174
+        },
+        "outputId": "98185dca-38a8-4652-e87a-89dd2a95b4bf"
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "          Salary\n",
+              "Manager         \n",
+              "Alice    65000.0\n",
+              "Bob      52500.0\n",
+              "Charlie  80000.0"
+            ],
+            "text/html": [
+              "\n",
+              "  <div id=\"df-2436c582-f058-4e30-9857-eb2d42974e8c\" class=\"colab-df-container\">\n",
+              "    <div>\n",
+              "<style scoped>\n",
+              "    .dataframe tbody tr th:only-of-type {\n",
+              "        vertical-align: middle;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe tbody tr th {\n",
+              "        vertical-align: top;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe thead th {\n",
+              "        text-align: right;\n",
+              "    }\n",
+              "</style>\n",
+              "<table border=\"1\" class=\"dataframe\">\n",
+              "  <thead>\n",
+              "    <tr style=\"text-align: right;\">\n",
+              "      <th></th>\n",
+              "      <th>Salary</th>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>Manager</th>\n",
+              "      <th></th>\n",
+              "    </tr>\n",
+              "  </thead>\n",
+              "  <tbody>\n",
+              "    <tr>\n",
+              "      <th>Alice</th>\n",
+              "      <td>65000.0</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>Bob</th>\n",
+              "      <td>52500.0</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>Charlie</th>\n",
+              "      <td>80000.0</td>\n",
+              "    </tr>\n",
+              "  </tbody>\n",
+              "</table>\n",
+              "</div>\n",
+              "    <div class=\"colab-df-buttons\">\n",
+              "\n",
+              "  <div class=\"colab-df-container\">\n",
+              "    <button class=\"colab-df-convert\" onclick=\"convertToInteractive('df-2436c582-f058-4e30-9857-eb2d42974e8c')\"\n",
+              "            title=\"Convert this dataframe to an interactive table.\"\n",
+              "            style=\"display:none;\">\n",
+              "\n",
+              "  <svg xmlns=\"http://www.w3.org/2000/svg\" height=\"24px\" viewBox=\"0 -960 960 960\">\n",
+              "    <path d=\"M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z\"/>\n",
+              "  </svg>\n",
+              "    </button>\n",
+              "\n",
+              "  <style>\n",
+              "    .colab-df-container {\n",
+              "      display:flex;\n",
+              "      gap: 12px;\n",
+              "    }\n",
+              "\n",
+              "    .colab-df-convert {\n",
+              "      background-color: #E8F0FE;\n",
+              "      border: none;\n",
+              "      border-radius: 50%;\n",
+              "      cursor: pointer;\n",
+              "      display: none;\n",
+              "      fill: #1967D2;\n",
+              "      height: 32px;\n",
+              "      padding: 0 0 0 0;\n",
+              "      width: 32px;\n",
+              "    }\n",
+              "\n",
+              "    .colab-df-convert:hover {\n",
+              "      background-color: #E2EBFA;\n",
+              "      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);\n",
+              "      fill: #174EA6;\n",
+              "    }\n",
+              "\n",
+              "    .colab-df-buttons div {\n",
+              "      margin-bottom: 4px;\n",
+              "    }\n",
+              "\n",
+              "    [theme=dark] .colab-df-convert {\n",
+              "      background-color: #3B4455;\n",
+              "      fill: #D2E3FC;\n",
+              "    }\n",
+              "\n",
+              "    [theme=dark] .colab-df-convert:hover {\n",
+              "      background-color: #434B5C;\n",
+              "      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);\n",
+              "      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));\n",
+              "      fill: #FFFFFF;\n",
+              "    }\n",
+              "  </style>\n",
+              "\n",
+              "    <script>\n",
+              "      const buttonEl =\n",
+              "        document.querySelector('#df-2436c582-f058-4e30-9857-eb2d42974e8c button.colab-df-convert');\n",
+              "      buttonEl.style.display =\n",
+              "        google.colab.kernel.accessAllowed ? 'block' : 'none';\n",
+              "\n",
+              "      async function convertToInteractive(key) {\n",
+              "        const element = document.querySelector('#df-2436c582-f058-4e30-9857-eb2d42974e8c');\n",
+              "        const dataTable =\n",
+              "          await google.colab.kernel.invokeFunction('convertToInteractive',\n",
+              "                                                    [key], {});\n",
+              "        if (!dataTable) return;\n",
+              "\n",
+              "        const docLinkHtml = 'Like what you see? Visit the ' +\n",
+              "          '<a target=\"_blank\" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'\n",
+              "          + ' to learn more about interactive tables.';\n",
+              "        element.innerHTML = '';\n",
+              "        dataTable['output_type'] = 'display_data';\n",
+              "        await google.colab.output.renderOutput(dataTable, element);\n",
+              "        const docLink = document.createElement('div');\n",
+              "        docLink.innerHTML = docLinkHtml;\n",
+              "        element.appendChild(docLink);\n",
+              "      }\n",
+              "    </script>\n",
+              "  </div>\n",
+              "\n",
+              "\n",
+              "  <div id=\"id_5a8c4f88-cd2f-4afd-a3cb-4375560e69f2\">\n",
+              "    <style>\n",
+              "      .colab-df-generate {\n",
+              "        background-color: #E8F0FE;\n",
+              "        border: none;\n",
+              "        border-radius: 50%;\n",
+              "        cursor: pointer;\n",
+              "        display: none;\n",
+              "        fill: #1967D2;\n",
+              "        height: 32px;\n",
+              "        padding: 0 0 0 0;\n",
+              "        width: 32px;\n",
+              "      }\n",
+              "\n",
+              "      .colab-df-generate:hover {\n",
+              "        background-color: #E2EBFA;\n",
+              "        box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);\n",
+              "        fill: #174EA6;\n",
+              "      }\n",
+              "\n",
+              "      [theme=dark] .colab-df-generate {\n",
+              "        background-color: #3B4455;\n",
+              "        fill: #D2E3FC;\n",
+              "      }\n",
+              "\n",
+              "      [theme=dark] .colab-df-generate:hover {\n",
+              "        background-color: #434B5C;\n",
+              "        box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);\n",
+              "        filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));\n",
+              "        fill: #FFFFFF;\n",
+              "      }\n",
+              "    </style>\n",
+              "    <button class=\"colab-df-generate\" onclick=\"generateWithVariable('PivotTable')\"\n",
+              "            title=\"Generate code using this dataframe.\"\n",
+              "            style=\"display:none;\">\n",
+              "\n",
+              "  <svg xmlns=\"http://www.w3.org/2000/svg\" height=\"24px\"viewBox=\"0 0 24 24\"\n",
+              "       width=\"24px\">\n",
+              "    <path d=\"M7,19H8.4L18.45,9,17,7.55,7,17.6ZM5,21V16.75L18.45,3.32a2,2,0,0,1,2.83,0l1.4,1.43a1.91,1.91,0,0,1,.58,1.4,1.91,1.91,0,0,1-.58,1.4L9.25,21ZM18.45,9,17,7.55Zm-12,3A5.31,5.31,0,0,0,4.9,8.1,5.31,5.31,0,0,0,1,6.5,5.31,5.31,0,0,0,4.9,4.9,5.31,5.31,0,0,0,6.5,1,5.31,5.31,0,0,0,8.1,4.9,5.31,5.31,0,0,0,12,6.5,5.46,5.46,0,0,0,6.5,12Z\"/>\n",
+              "  </svg>\n",
+              "    </button>\n",
+              "    <script>\n",
+              "      (() => {\n",
+              "      const buttonEl =\n",
+              "        document.querySelector('#id_5a8c4f88-cd2f-4afd-a3cb-4375560e69f2 button.colab-df-generate');\n",
+              "      buttonEl.style.display =\n",
+              "        google.colab.kernel.accessAllowed ? 'block' : 'none';\n",
+              "\n",
+              "      buttonEl.onclick = () => {\n",
+              "        google.colab.notebook.generateWithVariable('PivotTable');\n",
+              "      }\n",
+              "      })();\n",
+              "    </script>\n",
+              "  </div>\n",
+              "\n",
+              "    </div>\n",
+              "  </div>\n"
+            ],
+            "application/vnd.google.colaboratory.intrinsic+json": {
+              "type": "dataframe",
+              "variable_name": "PivotTable",
+              "summary": "{\n  \"name\": \"PivotTable\",\n  \"rows\": 3,\n  \"fields\": [\n    {\n      \"column\": \"Manager\",\n      \"properties\": {\n        \"dtype\": \"string\",\n        \"num_unique_values\": 3,\n        \"samples\": [\n          \"Alice\",\n          \"Bob\",\n          \"Charlie\"\n        ],\n        \"semantic_type\": \"\",\n        \"description\": \"\"\n      }\n    },\n    {\n      \"column\": \"Salary\",\n      \"properties\": {\n        \"dtype\": \"number\",\n        \"std\": 13768.926368215256,\n        \"min\": 52500.0,\n        \"max\": 80000.0,\n        \"num_unique_values\": 3,\n        \"samples\": [\n          65000.0,\n          52500.0,\n          80000.0\n        ],\n        \"semantic_type\": \"\",\n        \"description\": \"\"\n      }\n    }\n  ]\n}"
+            }
+          },
+          "metadata": {},
+          "execution_count": 47
+        }
+      ],
+      "source": [
+        "PivotTable = pd.pivot_table(\n",
+        "    left_join,values=\"Salary\",\n",
+        "    index = \"Manager\",\n",
+        "    aggfunc=\"mean\"\n",
+        ")\n",
+        "PivotTable"
+      ],
+      "id": "xLpDd-YKshXP"
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "RaZ7-H7OshXP"
+      },
+      "source": [
+        "## Practice 10: Advanced Data Manipulation"
+      ],
+      "id": "RaZ7-H7OshXP"
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "Uer97YZAshXQ"
+      },
+      "source": [
+        "**Q15.** Given a DataFrame with sales data, calculate the rolling 3-day average of 'Revenue'.\n",
+        "```python\n",
+        "sales_data = {\n",
+        "    'Date': pd.date_range(start='2023-01-01', periods=10, freq='D'),\n",
+        "    'Product': ['A', 'B', 'A', 'B', 'A', 'A', 'B', 'B', 'A', 'B'],\n",
+        "    'Revenue': [100, 200, 150, 250, 300, 250, 100, 150, 200, 300]\n",
+        "}\n",
+        "df_sales = pd.DataFrame(sales_data)\n",
+        "```"
+      ],
+      "id": "Uer97YZAshXQ"
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 50,
+      "metadata": {
+        "id": "aIZ39WKDshXU",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 397
+        },
+        "outputId": "0546c15c-9080-4abe-c7d2-d61860c590e2"
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "0           NaN\n",
+              "1           NaN\n",
+              "2    150.000000\n",
+              "3    200.000000\n",
+              "4    233.333333\n",
+              "5    266.666667\n",
+              "6    216.666667\n",
+              "7    166.666667\n",
+              "8    150.000000\n",
+              "9    216.666667\n",
+              "Name: Revenue, dtype: float64"
+            ],
+            "text/html": [
+              "<div>\n",
+              "<style scoped>\n",
+              "    .dataframe tbody tr th:only-of-type {\n",
+              "        vertical-align: middle;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe tbody tr th {\n",
+              "        vertical-align: top;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe thead th {\n",
+              "        text-align: right;\n",
+              "    }\n",
+              "</style>\n",
+              "<table border=\"1\" class=\"dataframe\">\n",
+              "  <thead>\n",
+              "    <tr style=\"text-align: right;\">\n",
+              "      <th></th>\n",
+              "      <th>Revenue</th>\n",
+              "    </tr>\n",
+              "  </thead>\n",
+              "  <tbody>\n",
+              "    <tr>\n",
+              "      <th>0</th>\n",
+              "      <td>NaN</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>1</th>\n",
+              "      <td>NaN</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>2</th>\n",
+              "      <td>150.000000</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>3</th>\n",
+              "      <td>200.000000</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>4</th>\n",
+              "      <td>233.333333</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>5</th>\n",
+              "      <td>266.666667</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>6</th>\n",
+              "      <td>216.666667</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>7</th>\n",
+              "      <td>166.666667</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>8</th>\n",
+              "      <td>150.000000</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>9</th>\n",
+              "      <td>216.666667</td>\n",
+              "    </tr>\n",
+              "  </tbody>\n",
+              "</table>\n",
+              "</div><br><label><b>dtype:</b> float64</label>"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 50
+        }
+      ],
+      "source": [
+        "sales_data = {\n",
+        "    'Date': pd.date_range(start='2023-01-01', periods=10, freq='D'),\n",
+        "    'Product': ['A', 'B', 'A', 'B', 'A', 'A', 'B', 'B', 'A', 'B'],\n",
+        "    'Revenue': [100, 200, 150, 250, 300, 250, 100, 150, 200, 300]\n",
+        "}\n",
+        "df_sales = pd.DataFrame(sales_data)\n",
+        "df_avg = df_sales[\"Revenue\"].rolling(3).mean()\n",
+        "df_avg"
+      ],
+      "id": "aIZ39WKDshXU"
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "dewlKJNZshXW"
+      },
+      "source": [
+        "**Q16.** Find the top 2 highest revenue days for each product from `df_sales`."
+      ],
+      "id": "dewlKJNZshXW"
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 62,
+      "metadata": {
+        "id": "7TElT58PshXX",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "outputId": "0a9f08ad-2eae-432a-f329-25b168e7ffa2"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "300\n",
+            "300\n"
+          ]
+        }
+      ],
+      "source": [
+        "sorted = df_sales[\"Revenue\"].sort_values()\n",
+        "print(sorted.iloc[-1])\n",
+        "print(sorted.iloc[-2])"
+      ],
+      "id": "7TElT58PshXX"
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "Ox3NlxqAshXY"
+      },
+      "source": [
+        "**Q17.** Extract the year and month from the 'Date' column in `df_sales` and create two new columns 'Year' and 'Month'."
+      ],
+      "id": "Ox3NlxqAshXY"
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 75,
+      "metadata": {
+        "id": "BsMQf7KPshXZ",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 363
+        },
+        "outputId": "6c08f088-bca6-47a8-d304-d6c09018fe6f"
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "         Date Product  Revenue  Year Month\n",
+              "0  2023-01-01       A      100  2023    01\n",
+              "1  2023-01-02       B      200  2023    01\n",
+              "2  2023-01-03       A      150  2023    01\n",
+              "3  2023-01-04       B      250  2023    01\n",
+              "4  2023-01-05       A      300  2023    01\n",
+              "5  2023-01-06       A      250  2023    01\n",
+              "6  2023-01-07       B      100  2023    01\n",
+              "7  2023-01-08       B      150  2023    01\n",
+              "8  2023-01-09       A      200  2023    01\n",
+              "9  2023-01-10       B      300  2023    01"
+            ],
+            "text/html": [
+              "\n",
+              "  <div id=\"df-c799c305-087d-4c59-a604-48f2fb91a18a\" class=\"colab-df-container\">\n",
+              "    <div>\n",
+              "<style scoped>\n",
+              "    .dataframe tbody tr th:only-of-type {\n",
+              "        vertical-align: middle;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe tbody tr th {\n",
+              "        vertical-align: top;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe thead th {\n",
+              "        text-align: right;\n",
+              "    }\n",
+              "</style>\n",
+              "<table border=\"1\" class=\"dataframe\">\n",
+              "  <thead>\n",
+              "    <tr style=\"text-align: right;\">\n",
+              "      <th></th>\n",
+              "      <th>Date</th>\n",
+              "      <th>Product</th>\n",
+              "      <th>Revenue</th>\n",
+              "      <th>Year</th>\n",
+              "      <th>Month</th>\n",
+              "    </tr>\n",
+              "  </thead>\n",
+              "  <tbody>\n",
+              "    <tr>\n",
+              "      <th>0</th>\n",
+              "      <td>2023-01-01</td>\n",
+              "      <td>A</td>\n",
+              "      <td>100</td>\n",
+              "      <td>2023</td>\n",
+              "      <td>01</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>1</th>\n",
+              "      <td>2023-01-02</td>\n",
+              "      <td>B</td>\n",
+              "      <td>200</td>\n",
+              "      <td>2023</td>\n",
+              "      <td>01</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>2</th>\n",
+              "      <td>2023-01-03</td>\n",
+              "      <td>A</td>\n",
+              "      <td>150</td>\n",
+              "      <td>2023</td>\n",
+              "      <td>01</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>3</th>\n",
+              "      <td>2023-01-04</td>\n",
+              "      <td>B</td>\n",
+              "      <td>250</td>\n",
+              "      <td>2023</td>\n",
+              "      <td>01</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>4</th>\n",
+              "      <td>2023-01-05</td>\n",
+              "      <td>A</td>\n",
+              "      <td>300</td>\n",
+              "      <td>2023</td>\n",
+              "      <td>01</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>5</th>\n",
+              "      <td>2023-01-06</td>\n",
+              "      <td>A</td>\n",
+              "      <td>250</td>\n",
+              "      <td>2023</td>\n",
+              "      <td>01</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>6</th>\n",
+              "      <td>2023-01-07</td>\n",
+              "      <td>B</td>\n",
+              "      <td>100</td>\n",
+              "      <td>2023</td>\n",
+              "      <td>01</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>7</th>\n",
+              "      <td>2023-01-08</td>\n",
+              "      <td>B</td>\n",
+              "      <td>150</td>\n",
+              "      <td>2023</td>\n",
+              "      <td>01</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>8</th>\n",
+              "      <td>2023-01-09</td>\n",
+              "      <td>A</td>\n",
+              "      <td>200</td>\n",
+              "      <td>2023</td>\n",
+              "      <td>01</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>9</th>\n",
+              "      <td>2023-01-10</td>\n",
+              "      <td>B</td>\n",
+              "      <td>300</td>\n",
+              "      <td>2023</td>\n",
+              "      <td>01</td>\n",
+              "    </tr>\n",
+              "  </tbody>\n",
+              "</table>\n",
+              "</div>\n",
+              "    <div class=\"colab-df-buttons\">\n",
+              "\n",
+              "  <div class=\"colab-df-container\">\n",
+              "    <button class=\"colab-df-convert\" onclick=\"convertToInteractive('df-c799c305-087d-4c59-a604-48f2fb91a18a')\"\n",
+              "            title=\"Convert this dataframe to an interactive table.\"\n",
+              "            style=\"display:none;\">\n",
+              "\n",
+              "  <svg xmlns=\"http://www.w3.org/2000/svg\" height=\"24px\" viewBox=\"0 -960 960 960\">\n",
+              "    <path d=\"M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z\"/>\n",
+              "  </svg>\n",
+              "    </button>\n",
+              "\n",
+              "  <style>\n",
+              "    .colab-df-container {\n",
+              "      display:flex;\n",
+              "      gap: 12px;\n",
+              "    }\n",
+              "\n",
+              "    .colab-df-convert {\n",
+              "      background-color: #E8F0FE;\n",
+              "      border: none;\n",
+              "      border-radius: 50%;\n",
+              "      cursor: pointer;\n",
+              "      display: none;\n",
+              "      fill: #1967D2;\n",
+              "      height: 32px;\n",
+              "      padding: 0 0 0 0;\n",
+              "      width: 32px;\n",
+              "    }\n",
+              "\n",
+              "    .colab-df-convert:hover {\n",
+              "      background-color: #E2EBFA;\n",
+              "      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);\n",
+              "      fill: #174EA6;\n",
+              "    }\n",
+              "\n",
+              "    .colab-df-buttons div {\n",
+              "      margin-bottom: 4px;\n",
+              "    }\n",
+              "\n",
+              "    [theme=dark] .colab-df-convert {\n",
+              "      background-color: #3B4455;\n",
+              "      fill: #D2E3FC;\n",
+              "    }\n",
+              "\n",
+              "    [theme=dark] .colab-df-convert:hover {\n",
+              "      background-color: #434B5C;\n",
+              "      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);\n",
+              "      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));\n",
+              "      fill: #FFFFFF;\n",
+              "    }\n",
+              "  </style>\n",
+              "\n",
+              "    <script>\n",
+              "      const buttonEl =\n",
+              "        document.querySelector('#df-c799c305-087d-4c59-a604-48f2fb91a18a button.colab-df-convert');\n",
+              "      buttonEl.style.display =\n",
+              "        google.colab.kernel.accessAllowed ? 'block' : 'none';\n",
+              "\n",
+              "      async function convertToInteractive(key) {\n",
+              "        const element = document.querySelector('#df-c799c305-087d-4c59-a604-48f2fb91a18a');\n",
+              "        const dataTable =\n",
+              "          await google.colab.kernel.invokeFunction('convertToInteractive',\n",
+              "                                                    [key], {});\n",
+              "        if (!dataTable) return;\n",
+              "\n",
+              "        const docLinkHtml = 'Like what you see? Visit the ' +\n",
+              "          '<a target=\"_blank\" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'\n",
+              "          + ' to learn more about interactive tables.';\n",
+              "        element.innerHTML = '';\n",
+              "        dataTable['output_type'] = 'display_data';\n",
+              "        await google.colab.output.renderOutput(dataTable, element);\n",
+              "        const docLink = document.createElement('div');\n",
+              "        docLink.innerHTML = docLinkHtml;\n",
+              "        element.appendChild(docLink);\n",
+              "      }\n",
+              "    </script>\n",
+              "  </div>\n",
+              "\n",
+              "\n",
+              "  <div id=\"id_6c77f0e8-c2f2-4be5-b2af-6d2e6284fe70\">\n",
+              "    <style>\n",
+              "      .colab-df-generate {\n",
+              "        background-color: #E8F0FE;\n",
+              "        border: none;\n",
+              "        border-radius: 50%;\n",
+              "        cursor: pointer;\n",
+              "        display: none;\n",
+              "        fill: #1967D2;\n",
+              "        height: 32px;\n",
+              "        padding: 0 0 0 0;\n",
+              "        width: 32px;\n",
+              "      }\n",
+              "\n",
+              "      .colab-df-generate:hover {\n",
+              "        background-color: #E2EBFA;\n",
+              "        box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);\n",
+              "        fill: #174EA6;\n",
+              "      }\n",
+              "\n",
+              "      [theme=dark] .colab-df-generate {\n",
+              "        background-color: #3B4455;\n",
+              "        fill: #D2E3FC;\n",
+              "      }\n",
+              "\n",
+              "      [theme=dark] .colab-df-generate:hover {\n",
+              "        background-color: #434B5C;\n",
+              "        box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);\n",
+              "        filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));\n",
+              "        fill: #FFFFFF;\n",
+              "      }\n",
+              "    </style>\n",
+              "    <button class=\"colab-df-generate\" onclick=\"generateWithVariable('df_sales')\"\n",
+              "            title=\"Generate code using this dataframe.\"\n",
+              "            style=\"display:none;\">\n",
+              "\n",
+              "  <svg xmlns=\"http://www.w3.org/2000/svg\" height=\"24px\"viewBox=\"0 0 24 24\"\n",
+              "       width=\"24px\">\n",
+              "    <path d=\"M7,19H8.4L18.45,9,17,7.55,7,17.6ZM5,21V16.75L18.45,3.32a2,2,0,0,1,2.83,0l1.4,1.43a1.91,1.91,0,0,1,.58,1.4,1.91,1.91,0,0,1-.58,1.4L9.25,21ZM18.45,9,17,7.55Zm-12,3A5.31,5.31,0,0,0,4.9,8.1,5.31,5.31,0,0,0,1,6.5,5.31,5.31,0,0,0,4.9,4.9,5.31,5.31,0,0,0,6.5,1,5.31,5.31,0,0,0,8.1,4.9,5.31,5.31,0,0,0,12,6.5,5.46,5.46,0,0,0,6.5,12Z\"/>\n",
+              "  </svg>\n",
+              "    </button>\n",
+              "    <script>\n",
+              "      (() => {\n",
+              "      const buttonEl =\n",
+              "        document.querySelector('#id_6c77f0e8-c2f2-4be5-b2af-6d2e6284fe70 button.colab-df-generate');\n",
+              "      buttonEl.style.display =\n",
+              "        google.colab.kernel.accessAllowed ? 'block' : 'none';\n",
+              "\n",
+              "      buttonEl.onclick = () => {\n",
+              "        google.colab.notebook.generateWithVariable('df_sales');\n",
+              "      }\n",
+              "      })();\n",
+              "    </script>\n",
+              "  </div>\n",
+              "\n",
+              "    </div>\n",
+              "  </div>\n"
+            ],
+            "application/vnd.google.colaboratory.intrinsic+json": {
+              "type": "dataframe",
+              "variable_name": "df_sales",
+              "summary": "{\n  \"name\": \"df_sales\",\n  \"rows\": 10,\n  \"fields\": [\n    {\n      \"column\": \"Date\",\n      \"properties\": {\n        \"dtype\": \"object\",\n        \"num_unique_values\": 10,\n        \"samples\": [\n          \"2023-01-09\",\n          \"2023-01-02\",\n          \"2023-01-06\"\n        ],\n        \"semantic_type\": \"\",\n        \"description\": \"\"\n      }\n    },\n    {\n      \"column\": \"Product\",\n      \"properties\": {\n        \"dtype\": \"category\",\n        \"num_unique_values\": 2,\n        \"samples\": [\n          \"B\",\n          \"A\"\n        ],\n        \"semantic_type\": \"\",\n        \"description\": \"\"\n      }\n    },\n    {\n      \"column\": \"Revenue\",\n      \"properties\": {\n        \"dtype\": \"number\",\n        \"std\": 74,\n        \"min\": 100,\n        \"max\": 300,\n        \"num_unique_values\": 5,\n        \"samples\": [\n          200,\n          300\n        ],\n        \"semantic_type\": \"\",\n        \"description\": \"\"\n      }\n    },\n    {\n      \"column\": \"Year\",\n      \"properties\": {\n        \"dtype\": \"object\",\n        \"num_unique_values\": 1,\n        \"samples\": [\n          \"2023\"\n        ],\n        \"semantic_type\": \"\",\n        \"description\": \"\"\n      }\n    },\n    {\n      \"column\": \"Month\",\n      \"properties\": {\n        \"dtype\": \"category\",\n        \"num_unique_values\": 1,\n        \"samples\": [\n          \"01\"\n        ],\n        \"semantic_type\": \"\",\n        \"description\": \"\"\n      }\n    }\n  ]\n}"
+            }
+          },
+          "metadata": {},
+          "execution_count": 75
+        }
+      ],
+      "source": [
+        "df_sales[\"Date\"] = df_sales[\"Date\"].astype(str)\n",
+        "\n",
+        "df_sales[[\"Year\", \"Month\"]] = df_sales[\"Date\"].str.split(\"-\", expand=True)[[0, 1]]\n",
+        "df_sales"
+      ],
+      "id": "BsMQf7KPshXZ"
+    }
+  ],
+  "metadata": {
+    "kernelspec": {
+      "display_name": "Python 3",
+      "language": "python",
+      "name": "python3"
+    },
+    "language_info": {
+      "codemirror_mode": {
+        "name": "ipython",
+        "version": 3
+      },
+      "file_extension": ".py",
+      "mimetype": "text/x-python",
+      "name": "python",
+      "nbconvert_exporter": "python",
+      "pygments_lexer": "ipython3",
+      "version": "3.11.0"
+    },
+    "colab": {
+      "provenance": []
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 5
+}
